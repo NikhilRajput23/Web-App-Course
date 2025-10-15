@@ -9,5 +9,5 @@ function d(data){
         console.log("sum of Result is "+data);
 
 }
-const value=user(1,2,d);
+const value=user(1,2,d );
 
