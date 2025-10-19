@@ -1,16 +1,21 @@
 const express = require('express');
-const bodyParser=require('body-parser');
+const bodyParser = require('body-parser');
 const app = express();
+app.use(bodyParser.json());
+const port=process.env.PORT||3000;
 
-app.use(bodyParser.json({}));
-app.get('/', (req, res) => {
-  console.log(req.headers);
-  res.send({ msg:"123"
-  })
+// POST route to handle background data
+app.post('/background', (req, res) => {
+  const message = req.body.message;   // Read JSON data from client
+  console.log("Message received:", message);
+
+  // Send response back to client
+  res.json({ 
+    output: "2 + 2 = 4 ✅",
   
+  });
 });
 
-app.listen(3000, () => {
-  console.log('✅ Server running on');
+app.listen(port, () => {
+  console.log('✅ Server running on http://localhost:3000');
 });
-  
